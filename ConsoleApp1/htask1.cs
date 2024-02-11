@@ -22,6 +22,15 @@ namespace homeWork1
             WriteLine($"Клетка ({x}, {y}) -> {GetPointColor(x, y)}");
             x = 3; y = 4;
             WriteLine($"Клетка ({x}, {y}) -> {GetPointColor(x, y)}");
+
+            print_problem(3);
+            var (A, B, C) = (1, -2, 1);
+            WriteLine($"У уравнения {A}x^2 + {B}x + {C}   ->   {CountRootsOfEquation(A,B,C)} корней");
+            (A, B, C) = (3, 20, -4);
+            WriteLine($"У уравнения {A}x^2 + {B}x + {C}   ->   {CountRootsOfEquation(A, B, C)} корней");
+            (A, B, C) = (-4, 5, -20);
+            WriteLine($"У уравнения {A}x^2 + {B}x + {C}   ->   {CountRootsOfEquation(A, B, C)} корней");
+
         }
 
 
@@ -61,7 +70,19 @@ namespace homeWork1
         }
 
 
+        // task 3
+        // in  -> double A, B, C (A != 0) - коэффециэнты квадратного уравнения
+        // out -> int от 0 до 2 - количество вещественных корней квадратного уравнения
+        static int CountRootsOfEquation(double a,  double b, double c)
+        {
+            if (a == 0) throw new ArgumentException($"{a} = 0, уравнение не квадратное");
 
+            double d = b * b - 4 * a * c;
+            if (d == 0) return 1;
+            else if (d > 0) return 2;
+            else return 0;
+
+        }
 
     }    
 }

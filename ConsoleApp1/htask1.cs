@@ -3,8 +3,10 @@ using static System.Math;
 
 namespace homeWork1 
 {
+
     static class Programm 
     {
+        static double eps = Pow(1, -10);
         static void Main()
         {
             print_problem(1);
@@ -24,13 +26,20 @@ namespace homeWork1
             WriteLine($"Клетка ({x}, {y}) -> {GetPointColor(x, y)}");
 
             print_problem(3);
-            var (A, B, C) = (1, -2, 1);
+            var (A, B, C) = (1.0, -2.0, 1.0);
             WriteLine($"У уравнения {A}x^2 + {B}x + {C}   ->   {CountRootsOfEquation(A,B,C)} корней");
-            (A, B, C) = (3, 20, -4);
+            (A, B, C) = (3, 20.35, -4);
             WriteLine($"У уравнения {A}x^2 + {B}x + {C}   ->   {CountRootsOfEquation(A, B, C)} корней");
             (A, B, C) = (-4, 5, -20);
             WriteLine($"У уравнения {A}x^2 + {B}x + {C}   ->   {CountRootsOfEquation(A, B, C)} корней");
 
+            print_problem(4);
+            var (x1, x2) = (1.333333333334, 1.333333333335);
+            WriteLine($"Минимальное из {x1}, {x2} -> {FoundMin(x1, x2)}");
+            (x1, x2) = (-1, 10000.32);
+            WriteLine($"Минимальное из {x1}, {x2} -> {FoundMin(x1, x2)}");
+                (x1, x2) = (25.3456, 25.3456);
+            WriteLine($"Минимальное из {x1}, {x2} -> {FoundMin(x1, x2)}");
         }
 
 
@@ -84,5 +93,9 @@ namespace homeWork1
 
         }
 
+        // task 4
+        // in  -> double a,b
+        // out -> double min(a,b)
+        static double FoundMin(double a, double b) => (a < b) ? a : b;
     }    
 }
